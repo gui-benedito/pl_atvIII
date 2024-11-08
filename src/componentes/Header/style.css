@@ -1,0 +1,16 @@
+.btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    padding: 1em 0;
+}
+
+.button-group {
+    display: flex; 
+    gap: 1em; 
+}
+
+.nav-button {
+    display: flex;
+    justify-content: center;
+}
