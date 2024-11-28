@@ -68,12 +68,31 @@ export default function ListaCliente() {
                 <a href="/cliente/cadastro" key="cadastrar"><button className="header-btn">Cadastrar</button></a>
             </div>
             <div className="Card-container">
-                {clientes.length <= 0 ? (
-                    <div className="lista-vazia">
-                        <img src={imgSemCliente} alt="Sem clientes cadastrados" />
-                    </div>
-                ) : (
-                    clientes.map((cliente) => (
+                <>
+                    <ClienteCard
+                        key={1}
+                        id={1}
+                        nome="João Silva"
+                        nomeSocial="Joãozinho"
+                        cpf={{
+                            valor: "123.456.789-00",
+                            dataEmissao: "2023-05-15",
+                        }}
+                        rg={{
+                            valor: "12.345.678-9",
+                            dataEmissao: "2020-03-20",
+                        }}
+                        telefones={
+                            [{
+                                ddd: '12',
+                                numero: '991810093'
+                            }]
+                        }
+                        email="joao.silva@example.com"
+                        onExcluir={() => openModalConfirmaExcluir(1)}
+                        pets={[]}
+                    />
+                    {clientes.map((cliente) => (
                         <ClienteCard
                             key={cliente.id}
                             id={cliente.id}
@@ -92,8 +111,8 @@ export default function ListaCliente() {
                             onExcluir={() => openModalConfirmaExcluir(cliente.id)}
                             pets={cliente.pets}
                         />
-                    ))
-                )}
+                    ))}
+                </>
             </div>
             <Modal
                 isOpen={openModalExcluir}

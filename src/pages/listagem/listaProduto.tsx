@@ -49,22 +49,24 @@ export default function ListaProduto() {
                 <a href="/produto/cadastro" key="cadastrar"><button className="header-btn">Cadastrar</button></a>
             </div>
             <div className="Card-container">
-                {produtos.length <= 0 ? (
-                    <div className="lista-vazia">
-                        <img src={imgSemProduto} alt="Sem produtos" />
-                    </div>
-                ) : (
-                    produtos.map((produto) => (
-                        <ProdutoCard
-                            key={produto.id}
-                            id={produto.id}
-                            nome={produto.nome}
-                            valor={produto.valor}
-                            quantidade={produto.quantidade}
-                            onExcluir={() => openModalConfirmaExcluir(produto.id)}
-                        />
-                    ))
-                )}
+                <ProdutoCard
+                    key={0}
+                    id={0}
+                    nome={'Ração'}
+                    valor={85}
+                    quantidade={150}
+                    onExcluir={() => openModalConfirmaExcluir(0)}
+                />
+                {produtos.map((produto) => (
+                    <ProdutoCard
+                        key={produto.id}
+                        id={produto.id}
+                        nome={produto.nome}
+                        valor={produto.valor}
+                        quantidade={produto.quantidade}
+                        onExcluir={() => openModalConfirmaExcluir(produto.id)}
+                    />
+                ))}
                 <Modal
                     isOpen={openModalExcluir}
                     label="Confirma a exclusão do produto?"

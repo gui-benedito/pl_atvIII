@@ -49,21 +49,22 @@ export default function ListaServico() {
                 <a href="/servico/cadastro" key="cadastrar"><button className="header-btn">Cadastrar</button></a>
             </div>
             <div className="Card-container">
-                {servicos.length <= 0 ? (
-                    <div className="lista-vazia">
-                        <img src={imgSemServio} alt="Sem serviços" />
-                    </div>
-                ) : (
-                    servicos.map((servico) => (
-                        <ServicoCard
-                            key={servico.id}
-                            id={servico.id}
-                            nome={servico.nome}
-                            valor={servico.valor}
-                            onExcluir={() => openModalConfirmaExcluir(servico.id)}
-                        />
-                    ))
-                )}
+                <ServicoCard
+                    key={0}
+                    id={0}
+                    nome={'Banho'}
+                    valor={65}
+                    onExcluir={() => openModalConfirmaExcluir(0)}
+                />
+                {servicos.map((servico) => (
+                    <ServicoCard
+                        key={servico.id}
+                        id={servico.id}
+                        nome={servico.nome}
+                        valor={servico.valor}
+                        onExcluir={() => openModalConfirmaExcluir(servico.id)}
+                    />
+                ))}
                 <Modal
                     isOpen={openModalExcluir}
                     label="Confirma a exclusão do serviço?"

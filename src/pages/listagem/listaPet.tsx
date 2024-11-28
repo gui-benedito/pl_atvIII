@@ -76,12 +76,17 @@ export default function ListaPet() {
                 <a href="/pet" key="lista"><button className="header-btn">Lista</button></a>
                 <a href="/pet/cadastro" key="cadastrar"><button className="header-btn">Cadastrar</button></a>
             </div>
-            {pets.length <= 0 ? (
-                <div className="lista-vazia">
-                    <img src={imgSemCliente} alt="Sem pets cadastrados" />
-                </div>
-            ) : (
-                pets.map((p) => (
+                <PetCard
+                    key={`1-Rex`}
+                    nome="Rex"
+                    genero="Macho"
+                    tipo="Cachorro"
+                    raca="Labrador"
+                    tutorId={1}
+                    tutorNome="João Silva"
+                    onExcluir={() => openModalConfirmaExcluir(1, "Rex")}
+                />
+                {pets.map((p) => (
                     <PetCard
                         key={`${p.tutorId}-${p.nome}`}
                         nome={p.nome}
@@ -92,9 +97,7 @@ export default function ListaPet() {
                         tutorNome={p.tutorNome}
                         onExcluir={() => openModalConfirmaExcluir(p.tutorId, p.nome)}
                     />
-                ))
-            )}
-
+                ))}
             <Modal
                 isOpen={openModalExcluir}
                 label="Confirma a exclusão do pet?"
